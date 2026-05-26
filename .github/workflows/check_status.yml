@@ -52,6 +52,10 @@ jobs:
           import smtplib, os, json
           from email.mime.text import MIMEText
 
+          if not os.path.exists("status.json"):
+              print("No status.json — skipping email")
+              exit(0)
+              
           with open("status.json") as f:
               d = json.load(f)
 
