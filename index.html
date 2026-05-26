@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<meta http-equiv="refresh" content="3600"/>
+<title>UIUC Application Status</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    background: #13294B;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+  }
+  .card {
+    background: #1d3a6e;
+    border-radius: 20px;
+    padding: 36px 28px;
+    max-width: 440px;
+    width: 100%;
+    box-shadow: 0 12px 40px rgba(0,0,0,0.5);
+  }
+  .header {
+    text-align: center;
+    margin-bottom: 24px;
+  }
+  .uni-logo {
+    color: #FF5F05;
+    font-size: 12px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    font-weight: 700;
+    margin-bottom: 6px;
+  }
+  .uni-name {
+    color: white;
+    font-size: 18px;
+    font-weight: 600;
+  }
+  .status-box {
+    background: #e67e2222;
+    border: 2px solid #e67e22;
+    border-radius: 12px;
+    padding: 20px;
+    text-align: center;
+    margin: 20px 0;
+  }
+  .status-emoji { font-size: 48px; display: block; margin-bottom: 10px; }
+  .status-label { color: #aaa; font-size: 11px; text-transform: uppercase; letter-spacing: 1px; }
+  .status-value {
+    color: #e67e22;
+    font-size: 22px;
+    font-weight: 700;
+    margin-top: 4px;
+  }
+  .field {
+    background: rgba(255,255,255,0.06);
+    border-radius: 10px;
+    padding: 12px 16px;
+    margin: 8px 0;
+    color: white;
+  }
+  .field-label {
+    color: #8899bb;
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 3px;
+  }
+  .field-value { font-size: 14px; font-weight: 500; }
+  .checklist {
+    background: rgba(255,255,255,0.06);
+    border-radius: 10px;
+    padding: 12px 16px;
+    margin: 8px 0;
+    color: white;
+  }
+  .checklist-title {
+    color: #8899bb;
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 10px;
+  }
+  .check-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 8px;
+    font-size: 13px;
+    padding: 4px 0;
+    border-bottom: 1px solid rgba(255,255,255,0.06);
+  }
+  .check-item:last-child { border-bottom: none; }
+  .check-dot { color: #2ecc71; font-size: 16px; margin-top: 1px; }
+  .check-text { flex: 1; line-height: 1.4; }
+  .check-date { color: #8899bb; font-size: 11px; white-space: nowrap; }
+  .footer {
+    text-align: center;
+    color: #556688;
+    font-size: 12px;
+    margin-top: 20px;
+    line-height: 1.6;
+  }
+  .link { color: #5599ff; text-decoration: none; }
+</style>
+</head>
+<body>
+<div class="card">
+  <div class="header">
+    <div class="uni-logo">🎓 University of Illinois</div>
+    <div class="uni-name">Graduate College — Application Portal</div>
+  </div>
+
+  <div class="status-box">
+    <span class="status-emoji">⏳</span>
+    <div class="status-label">Application Status</div>
+    <div class="status-value">Awaiting Decision</div>
+  </div>
+
+  <div class="field">
+    <div class="field-label">Program</div>
+    <div class="field-value">Computer Science (Urbana campus)-MCS</div>
+  </div>
+
+  <div class="field">
+    <div class="field-label">Term</div>
+    <div class="field-value">Fall 2026</div>
+  </div>
+
+  <div class="field">
+    <div class="field-label">Reference #</div>
+    <div class="field-value">110452293</div>
+  </div>
+
+  <div class="checklist">
+    <div class="checklist-title">Application Checklist</div>
+    <div class="check-item">
+      <span class="check-dot">✓</span>
+      <span class="check-text">Recommendation — Deepa Handralu Kumar, Bosch</span>
+      <span class="check-date">04/08/2026</span>
+    </div>
+    <div class="check-item">
+      <span class="check-dot">✓</span>
+      <span class="check-text">Recommendation — Ravi Shanker, LPU</span>
+      <span class="check-date">04/07/2026</span>
+    </div>
+    <div class="check-item">
+      <span class="check-dot">✓</span>
+      <span class="check-text">Recommendation — Richa Jain, LPU</span>
+      <span class="check-date">04/13/2026</span>
+    </div>
+    <div class="check-item">
+      <span class="check-dot">✓</span>
+      <span class="check-text">Transcript — Lovely Professional University</span>
+      <span class="check-date">04/03/2026</span>
+    </div>
+    <div class="check-item">
+      <span class="check-dot">✓</span>
+      <span class="check-text">Academic Statement of Purpose</span>
+      <span class="check-date">04/04/2026</span>
+    </div>
+    <div class="check-item">
+      <span class="check-dot">✓</span>
+      <span class="check-text">Test Score Report (Unofficial Copy)</span>
+      <span class="check-date">04/04/2026</span>
+    </div>
+    <div class="check-item">
+      <span class="check-dot">✓</span>
+      <span class="check-text">Passport</span>
+      <span class="check-date">04/03/2026</span>
+    </div>
+    <div class="check-item">
+      <span class="check-dot">✓</span>
+      <span class="check-text">Resume</span>
+      <span class="check-date">04/03/2026</span>
+    </div>
+  </div>
+
+  <div class="footer">
+    Last checked: 2026-05-26 13:20 UTC<br/>
+    Checks daily at 11:30 AM IST · Auto-refreshes hourly<br/>
+    <a class="link" href="https://choose.illinois.edu/apply/status" target="_blank">Open official portal →</a>
+  </div>
+</div>
+</body>
+</html>
