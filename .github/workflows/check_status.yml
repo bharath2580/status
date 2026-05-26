@@ -28,8 +28,8 @@ jobs:
       - name: Run status check
         id: status_check
         env:
-          ILLINOIS_EMAIL:    ${{ secrets.ILLINOIS_EMAIL }}
-          ILLINOIS_PASSWORD: ${{ secrets.ILLINOIS_PASSWORD }}
+          ILLINOIS_EMAIL:    ${{ secrets.NOTIFY_EMAIL }}
+          ILLINOIS_PASSWORD: ${{ secrets.PASSWORD }}
         run: python check_status.py
         continue-on-error: true
 
