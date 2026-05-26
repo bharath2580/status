@@ -1,7 +1,21 @@
 import json
 
-with open("status.json") as f:
-    d = json.load(f)
+import json, os
+
+# Default data if status.json doesn't exist yet
+d = {
+    "status":          "Awaiting Decision",
+    "previous_status": "Awaiting Decision",
+    "status_changed":  False,
+    "reference":       "110452293",
+    "program":         "Computer Science (Urbana campus)-MCS",
+    "last_checked":    "Not yet checked",
+}
+
+if os.path.exists("status.json"):
+    with open("status.json") as f:
+        d = json.load(f)
+
 
 status   = d["status"]
 changed  = d["status_changed"]
