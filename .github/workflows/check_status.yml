@@ -2,18 +2,20 @@ name: Check UIUC Application Status
 
 on:
   schedule:
-    - cron: '0 6 * * *'    # 6 AM UTC = 11:30 AM IST daily
-  workflow_dispatch:         # manual trigger button in GitHub UI
-
-permissions:
-  contents: write
+    - cron: '0 6 * * *'
+  workflow_dispatch:
 
 jobs:
   check:
     runs-on: ubuntu-latest
 
+    permissions:
+      contents: write
+
     steps:
       - uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Set up Python
         uses: actions/setup-python@v5
@@ -29,7 +31,7 @@ jobs:
           ILLINOIS_EMAIL:    ${{ secrets.ILLINOIS_EMAIL }}
           ILLINOIS_PASSWORD: ${{ secrets.ILLINOIS_PASSWORD }}
         run: python check_status.py
-        continue-on-error: true   # don't abort workflow on exit(1)
+        continue-on-error: true
 
       - name: Build dashboard HTML
         run: python build_html.py
@@ -58,7 +60,7 @@ jobs:
           Current:  {d['status']}
 
           Check your dashboard:
-          https://YOUR_USERNAME.github.io/uiuc-status-checker
+          https://bharath2580.github.io/status
 
           Or log in directly:
           https://choose.illinois.edu/apply/status
