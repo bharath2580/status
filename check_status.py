@@ -7,8 +7,8 @@ BASE_URL   = "https://choose.illinois.edu"
 LOGIN_URL  = f"{BASE_URL}/account/login"
 STATUS_URL = f"{BASE_URL}/apply/status"
 
-EMAIL    = os.environ["ILLINOIS_EMAIL"]
-PASSWORD = os.environ["ILLINOIS_PASSWORD"]
+EMAIL    = os.environ["NOTIFY_EMAIL"]
+PASSWORD = os.environ["PASSWORD"]
 
 session = requests.Session()
 session.headers.update({
