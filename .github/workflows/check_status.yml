@@ -41,9 +41,9 @@ jobs:
           git config user.name  "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
           git remote set-url origin https://x-access-token:${{ secrets.PAT_TOKEN }}@github.com/bharath2580/status.git
-          git add status.json index.html
+          git add -f status.json index.html || true
           git diff --cached --quiet || git commit -m "Status check $(date -u +'%Y-%m-%d %H:%M UTC')"
-          git push
+          git push || true
 
       - name: Send alert email if status changed
         if: steps.status_check.outcome == 'failure'
