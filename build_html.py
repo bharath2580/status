@@ -1,6 +1,5 @@
-import json
-
 import json, os
+from datetime import datetime, timedelta
 
 # Default data if status.json doesn't exist yet
 d = {
@@ -15,6 +14,26 @@ d = {
 if os.path.exists("status.json"):
     with open("status.json") as f:
         d = json.load(f)
+
+
+last_checked_display = d["last_checked"]
+
+try:
+    utc_dt = datetime.strptime(d["last_checked"], "%Y-%m-%d %H:%M UTC")
+    ist_dt = utc_dt + timedelta(hours=5, minutes=30)
+
+    day = ist_dt.day
+    suffix = (
+        "th" if 11 <= day <= 13 else
+        {1: "st", 2: "nd", 3: "rd"}.get(day % 10, "th")
+    )
+
+    last_checked_display = (
+        f"{d['last_checked']} "
+        f"({day}{suffix} {ist_dt.strftime('%H:%M')} IST)"
+    )
+except Exception:
+    pass
 
 
 status   = d["status"]
@@ -212,7 +231,7 @@ html = f"""<!DOCTYPE html>
   </div>
 
   <div class="footer">
-    Last checked: {d['last_checked']}<br/>
+    Last checked: {last_checked_display}<br/>
     Checks hourly (12PM–1AM UTC · 5:30PM–6:30AM IST)<br/>
     This page auto-refreshes hourly<br/>
     <a class="link" href="https://choose.illinois.edu/apply/status" target="_blank">Open official portal →</a>
