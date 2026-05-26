@@ -213,7 +213,8 @@ html = f"""<!DOCTYPE html>
 
   <div class="footer">
     Last checked: {d['last_checked']}<br/>
-    Checks daily at 11:30 AM IST · Auto-refreshes hourly<br/>
+    Checks hourly (12PM–1AM UTC · 5:30PM–6:30AM IST)<br/>
+    This page auto-refreshes hourly<br/>
     <a class="link" href="https://choose.illinois.edu/apply/status" target="_blank">Open official portal →</a>
   </div>
 </div>
