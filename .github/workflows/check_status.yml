@@ -2,7 +2,7 @@ name: Check UIUC Application Status
 
 on:
   schedule:
-    - cron: '0 12-23,0,1 * * *'
+    - cron: '7 12-23,0,1 * * *'
   workflow_dispatch:
 
 jobs:
