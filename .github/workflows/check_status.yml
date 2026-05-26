@@ -44,20 +44,37 @@ jobs:
 
       - name: Send alert email if status changed
         if: steps.status_check.outcome == 'failure'
-        uses: dawidd6/action-send-mail@v3
-        with:
-          server_address: smtp.gmail.com
-          server_port: 465
-          secure: true
-          username: ${{ secrets.NOTIFY_EMAIL }}
-          password: ${{ secrets.NOTIFY_EMAIL_PASSWORD }}
-          to: ${{ secrets.NOTIFY_EMAIL }}
-          subject: "🚨 UIUC Application Status Changed!"
-          body: |
-            Your UIUC application status has changed from "Awaiting Decision".
-            
-            Check your dashboard immediately:
-            https://bharath2580.github.io/uiuc-status-checker
-            
-            Or log in directly:
-            https://choose.illinois.edu/apply/status
+        run: |
+          python - <<'EOF'
+          import smtplib, os, json
+          from email.mime.text import MIMEText
+
+          with open("status.json") as f:
+              d = json.load(f)
+
+          body = f"""Your UIUC application status has changed!
+
+          Previous: {d['previous_status']}
+          Current:  {d['status']}
+
+          Check your dashboard:
+          https://YOUR_USERNAME.github.io/uiuc-status-checker
+
+          Or log in directly:
+          https://choose.illinois.edu/apply/status
+          """
+
+          msg = MIMEText(body)
+          msg["Subject"] = "🚨 UIUC Application Status Changed!"
+          msg["From"]    = os.environ["NOTIFY_EMAIL"]
+          msg["To"]      = os.environ["NOTIFY_EMAIL"]
+
+          with smtplib.SMTP_SSL("smtp.gmail.com", 465) as smtp:
+              smtp.login(os.environ["NOTIFY_EMAIL"], os.environ["NOTIFY_EMAIL_PASSWORD"])
+              smtp.send_message(msg)
+
+          print("Alert email sent!")
+          EOF
+        env:
+          NOTIFY_EMAIL:          ${{ secrets.NOTIFY_EMAIL }}
+          NOTIFY_EMAIL_PASSWORD: ${{ secrets.NOTIFY_EMAIL_PASSWORD }}
