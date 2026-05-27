@@ -1,8 +1,8 @@
 {
-  "status": "Awaiting Decision",
+  "status": "Program Review Complete",
   "previous_status": "Awaiting Decision",
-  "status_changed": false,
+  "status_changed": true,
   "reference": "110452293",
-  "program": "Computer Science (Urbana campus)-MCS",
-  "last_checked": "2026-05-27 01:54 UTC"
+  "program": "Review Complete Reference Number: 110452293 Proposed Degree Program: Computer Science (Urbana campus)-MCS Term: Fall 2026 The Program has completed their departmental review of your application and you should have been notified of their decision. Please contact the Program if you have questions about their decision.",
+  "last_checked": "2026-05-27 16:30 UTC"
 }
